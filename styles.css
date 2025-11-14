@@ -1,0 +1,82 @@
+/* styles.css - diseño limpio, elegante y juvenil
+   - La capa visual (melody + bubbles) queda detrás (z-index:0)
+   - El contenido principal tiene z-index:1 para estar arriba
+*/
+
+:root{
+  --bg1:#061029;
+  --bg2:#0f1b33;
+  --text:#eaf3ff;
+  --muted:#9fb0c8;
+  --accent:#ff6b6b;
+  --c1:#ff6b6b;
+  --c2:#6b8cff;
+  --c3:#8affc1;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Página principal */
+.page{min-height:100vh;position:relative;overflow:hidden;padding:36px 20px}
+
+/* Cabecera */
+.header{display:flex;align-items:center;gap:12px;margin-bottom:18px;position:relative;z-index:1}
+.logo{width:56px;height:56px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.6)}
+.logo-svg{width:32px;height:32px;fill:var(--accent)}
+.site-title{font-weight:800;font-size:clamp(20px,4vw,36px);margin:0}
+
+/* Filtros */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;position:relative;z-index:1}
+.filter-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:600;transition:all .22s}
+.filter-btn.active{background:linear-gradient(90deg,var(--c1),var(--c2));color:#021026;border:none;box-shadow:0 12px 30px rgba(6,20,40,0.45)}
+
+/* Visual-layer: marca de agua (detrás del contenido) */
+.visual-layer{position:absolute;inset:0;pointer-events:none;opacity:1;z-index:0}
+.melody{position:absolute;left:-10%;right:-10%;bottom:4%;height:35vh;mix-blend-mode:screen;opacity:0.18;filter:blur(6px)}
+.bubbles{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+
+/* Galería (contenido encima de la visual-layer) */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;position:relative;z-index:1}
+.video-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(6px);box-shadow:0 6px 18px rgba(3,6,23,0.6)}
+.video-meta{margin-bottom:8px}
+.video-meta h3{margin:0;font-size:1rem}
+.embed-wrap{aspect-ratio:16/9;overflow:hidden;border-radius:10px;border:1px solid rgba(0,0,0,0.35)}
+.embed-wrap iframe{width:100%;height:100%;display:block;border:none;background:#000}
+
+/* Footer */
+.footer{margin-top:22px;color:var(--muted);text-align:center;position:relative;z-index:1}
+
+/* Animación flotante para pequeñas variaciones */
+@keyframes floaty {0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+.video-card{animation:floaty 7s ease-in-out infinite}
+
+/* Burbujas: estilos base para cada burbuja creada por JS */
+.bubble{
+  position:absolute;
+  border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.15));
+  opacity:0.12;
+  filter: blur(1px);
+  mix-blend-mode: screen;
+  animation: rise calc(8s + var(--r)*6s) linear infinite;
+}
+@keyframes rise {
+  0%{transform: translateY(110vh) scale(0.6); opacity:0}
+  10%{opacity:0.14}
+  60%{opacity:0.12}
+  100%{transform: translateY(-30vh) scale(1); opacity:0}
+}
+
+/* Responsive */
+@media (max-width:600px){
+  .site-title{font-size:22px}
+  .melody{height:20vh;opacity:0.12;filter:blur(8px)}
+}

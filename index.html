@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Música Valeris</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Fuente moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div class="page">
+
+    <!-- CABECERA -->
+    <header class="header">
+      <div class="logo" aria-hidden="true">
+        <!-- SVG ícono musical -->
+        <svg viewBox="0 0 24 24" class="logo-svg" role="img" aria-label="ícono musical">
+          <path d="M9 3v12.55A4 4 0 1 0 11 19V7h6V3H9z"/>
+        </svg>
+      </div>
+      <h1 class="site-title">Música Valeris</h1>
+    </header>
+
+    <!-- FILTROS -->
+    <nav class="filters" aria-label="Filtros de música">
+      <button class="filter-btn active" data-filter="all">Todo</button>
+      <button class="filter-btn" data-filter="jose-jose">José José</button>
+      <button class="filter-btn" data-filter="urban">Urbano / Pop</button>
+      <button class="filter-btn" data-filter="regional">Regional</button>
+      <button class="filter-btn" data-filter="luister">Luister</button>
+      <button class="filter-btn" data-filter="others">Otros</button>
+    </nav>
+
+    <!-- CAPAS DE FONDO (melodía + burbujas) -->
+    <div class="visual-layer" aria-hidden="true">
+      <!-- OLA / MELODÍA SVG (marca de agua) -->
+      <svg class="melody" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="grad" x1="0" x2="1">
+            <stop offset="0%" stop-color="var(--c1)"/>
+            <stop offset="50%" stop-color="var(--c2)"/>
+            <stop offset="100%" stop-color="var(--c3)"/>
+          </linearGradient>
+        </defs>
+        <path id="mel-path" d="M0 100 C150 20, 350 180, 500 100 C650 20, 800 180, 1000 100 L1000 200 L0 200 Z" fill="url(#grad)"></path>
+      </svg>
+
+      <!-- Burbujas: contenedor; las burbujas se generan por JS -->
+      <div class="bubbles" id="bubbles"></div>
+    </div>
+
+    <!-- GALERÍA DE VIDEOS -->
+    <main class="gallery" id="gallery">
+
+      <!-- 1 -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>Título 1 — Artista</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/cii6ruuycQA" title="Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>Título 2 — Artista</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/G7KNmW9a75Y" title="Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>Título 3 — Artista</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/KEG7b851Ric" title="Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 4 José José -->
+      <article class="video-card" data-filter="jose-jose">
+        <div class="video-meta"><h3>El Amar y el Querer — José José</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/15iEJ0qY_70" title="José José - El Amar y el Querer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 5 Luister -->
+      <article class="video-card" data-filter="luister">
+        <div class="video-meta"><h3>Las Cartas — Luister La Voz</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/kDGTioCorTY" title="Luister La Voz - Las Cartas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>Título 6 — Artista</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/MgsdDfdGdHc" title="Video 6" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 7 Carín León -->
+      <article class="video-card" data-filter="regional">
+        <div class="video-meta"><h3>Primera Cita — Carín León</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/jhMiIUb2GEA" title="Carín León - Primera Cita" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>Título 8 — Artista</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/_-YjO6KfEMk" title="Video 8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 9 José José (otro link usado anteriormente) -->
+      <article class="video-card" data-filter="jose-jose">
+        <div class="video-meta"><h3>José José — (versión)</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/RzJ3QjBsqM0" title="José José" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 10 Luister -->
+      <article class="video-card" data-filter="luister">
+        <div class="video-meta"><h3>Vuela Gaviota — Luister La Voz</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/z2cVudkXvyA" title="Vuela Gaviota" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>Título 11 — Artista</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/XwQ7lpnxj0o" title="Video 11" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 12 -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>Título 12 — Artista</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/d7glwJ5yd20" title="Video 12" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 13 Billie Eilish -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>Birds of a Feather — Billie Eilish</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/V9PVRfjEBTI" title="Billie Eilish - Birds of a Feather" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 14 LISA -->
+      <article class="video-card" data-filter="urban">
+        <div class="video-meta"><h3>MONEY — LISA</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/dNCWe_6HAM8" title="LISA - MONEY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 15 BIBI (Scott & Zelda) -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>BIBI — Scott & Zelda</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/co-TFLbaZAE" title="Scott & Zelda - BIBI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 16 Katseye -->
+      <article class="video-card" data-filter="others">
+        <div class="video-meta"><h3>Gabriela — Katseye</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/ZYz_3ufpmN8" title="Katseye - Gabriela" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <!-- 17 Justin Quiles -->
+      <article class="video-card" data-filter="urban">
+        <div class="video-meta"><h3>Loco Por Verte — Justin Quiles</h3></div>
+        <div class="embed-wrap">
+          <iframe src="https://www.youtube.com/embed/YzOyT_Wu9l4" title="Justin Quiles - Loco Por Verte" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- PIE -->
+    <footer class="footer">
+      <p>Diseño musical — Música Valeris</p>
+    </footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>
